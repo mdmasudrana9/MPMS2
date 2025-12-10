@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { Button } from "@/src/components/ui/button";
 import { Input } from "@/src/components/ui/input";
 import {
   Select,
@@ -11,7 +11,7 @@ import {
 } from "@/src/components/ui/select";
 import { Tabs, TabsList, TabsTrigger } from "@/src/components/ui/tabs";
 import type { Project, Sprint, Task } from "@/src/lib/types";
-import { LayoutGrid, ListFilter, Plus, Search } from "lucide-react";
+import { LayoutGrid, ListFilter, Search } from "lucide-react";
 import { useState } from "react";
 
 import { CreateTaskDialog } from "@/src/components/create-task-dialog";
@@ -72,10 +72,10 @@ export default function TasksPage() {
               </p>
             </div>
 
-            <Button onClick={() => setCreateOpen(true)}>
+            {/* <Button onClick={() => setCreateOpen(true)}>
               <Plus className="mr-2 h-4 w-4" />
               New Task
-            </Button>
+            </Button> */}
           </div>
         </div>
       </header>
