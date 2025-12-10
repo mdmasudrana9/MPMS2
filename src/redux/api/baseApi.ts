@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   BaseQueryApi,
   BaseQueryFn,
@@ -12,7 +13,8 @@ import { toast } from "sonner";
 import { TAG_TYPES } from "@/src/redux/constants/tagTypes";
 
 const BaseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api/v1",
+  // baseUrl: "http://localhost:5000/api/v1",
+  baseUrl: "https://mpms-server.vercel.app/api/v1",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token; // Assuming you have a token in your auth slice
@@ -33,10 +35,14 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     toast.error((result?.error?.data as { message: string })?.message);
   }
   if (result?.error?.status === 401) {
-    const res = await fetch("http://localhost:5000/api/v1/auth/refresh-token", {
-      method: "POST",
-      credentials: "include",
-    });
+    // const res = await fetch("http://localhost:5000/api/v1/auth/refresh-token", {
+    const res = await fetch(
+      "https://mpms-server.vercel.app/api/v1/auth/refresh-token",
+      {
+        method: "POST",
+        credentials: "include",
+      }
+    );
     const data = await res.json();
     if (data?.data.accessToken) {
       const user = (api.getState() as RootState).auth.user;
