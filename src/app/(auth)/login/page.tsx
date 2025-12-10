@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { Alert, AlertDescription } from "@/src/components/ui/alert";
@@ -20,7 +21,15 @@ import {
   TUser,
 } from "@/src/redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/src/redux/hooks";
-import { AlertCircle, Eye, EyeOff, FolderKanban, Loader2 } from "lucide-react";
+import { Separator } from "@radix-ui/react-dropdown-menu";
+import {
+  AlertCircle,
+  Eye,
+  EyeOff,
+  FolderKanban,
+  Loader2,
+  SeparatorHorizontal,
+} from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -133,7 +142,15 @@ export default function LoginPage() {
 
           {/* Demo */}
           <div className="rounded-lg border bg-muted/50 p-3 text-sm mb-4">
-            <p className="font-medium text-foreground">Demo Credentials:</p>
+            <p className="font-medium text-foreground">
+              Demo Credentials For User:
+            </p>
+            <p className="text-muted-foreground">ID: M-0002</p>
+            <p className="text-muted-foreground">Password: M1234567</p>
+            <div className="border-b my-2"></div>
+            <p className="font-medium text-foreground">
+              Demo Credentials For Admin:
+            </p>
             <p className="text-muted-foreground">ID: A-0001</p>
             <p className="text-muted-foreground">Password: 12345</p>
           </div>
