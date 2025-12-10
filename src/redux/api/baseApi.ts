@@ -13,8 +13,8 @@ import { toast } from "sonner";
 import { TAG_TYPES } from "@/src/redux/constants/tagTypes";
 
 const BaseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api/v1",
-  // baseUrl: "https://mpms-server.vercel.app/api/v1",
+  // baseUrl: "http://localhost:5000/api/v1",
+  baseUrl: "https://mpms-server.vercel.app/api/v1",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token; // Assuming you have a token in your auth slice
