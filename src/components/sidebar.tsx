@@ -36,26 +36,26 @@ const navItems = [
     href: "/dashboard",
     label: "Dashboard",
     icon: LayoutDashboard,
-    roles: ["admin", "manager", "member"],
+    roles: ["admin", "member"],
   },
   {
     href: "/projects",
     label: "Projects",
     icon: FolderKanban,
-    roles: ["admin", "manager", "member"],
+    roles: ["admin", "member"],
   },
   {
     href: "/tasks",
     label: "Tasks",
     icon: ListTodo,
-    roles: ["admin", "manager", "member"],
+    roles: ["admin", "member"],
   },
-  { href: "/team", label: "Team", icon: Users, roles: ["admin", "manager"] },
+  { href: "/team", label: "Team", icon: Users, roles: ["admin"] },
   {
     href: "/reports",
     label: "Reports",
     icon: BarChart3,
-    roles: ["admin", "manager"],
+    roles: ["admin"],
   },
 ];
 
@@ -129,7 +129,7 @@ function SidebarContent({ onLinkClick }: { onLinkClick?: () => void }) {
                 </AvatarFallback>
               </Avatar>
               <div className="flex-1 overflow-hidden">
-                <p className="truncate text-sm font-medium">{user.role}</p>
+                {/* <p className="truncate text-sm font-medium">{user.role}</p> */}
                 <Badge
                   variant="secondary"
                   className={cn(
