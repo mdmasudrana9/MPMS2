@@ -35,7 +35,7 @@ const priorityColors: Record<TaskPriority, string> = {
   urgent: "bg-red-500/10 text-red-500 border-red-500/20",
 };
 
-export function TaskKanban({ tasks, onUpdate }: TaskKanbanProps) {
+export function TaskKanban({ tasks }: TaskKanbanProps) {
   const [draggedTask, setDraggedTask] = useState<string | null>(null);
   const [deleteTask] = useDeleteTaskMutation();
 
@@ -145,7 +145,7 @@ export function TaskKanban({ tasks, onUpdate }: TaskKanbanProps) {
                         <div className="flex items-center gap-0.5 sm:gap-1">
                           <User className="h-2 w-2 sm:h-3 sm:w-3" />
                           <span className="truncate  sm:max-w-[60px]">
-                            {task.assignees[0].split(" ")[0]}
+                            {/* {task.assignees.email} */}
                           </span>
                           {task.assignees.length > 1 && (
                             <span>+{task.assignees.length - 1}</span>

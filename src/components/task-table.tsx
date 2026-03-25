@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/static-components */
 "use client";
 
 import { useState, useMemo } from "react";
@@ -105,6 +106,8 @@ export function TaskTable({ tasks, sprints, onUpdate }: TaskTableProps) {
     sortDir,
   ]);
 
+  // console.log("filteredTasks", filteredTasks);
+
   const handleDelete = async (id: string) => {
     try {
       await deleteTask(id).unwrap();
@@ -171,7 +174,7 @@ export function TaskTable({ tasks, sprints, onUpdate }: TaskTableProps) {
             </SelectContent>
           </Select>
           <Select value={filterStatus} onValueChange={setFilterStatus}>
-            <SelectTrigger className="w-[80px] sm:w-[130px] h-7 sm:h-8 text-[10px] sm:text-sm">
+            <SelectTrigger className="w-20 sm:w-[130px] h-7 sm:h-8 text-[10px] sm:text-sm">
               <SelectValue placeholder="Status" />
             </SelectTrigger>
             <SelectContent>
@@ -183,7 +186,7 @@ export function TaskTable({ tasks, sprints, onUpdate }: TaskTableProps) {
             </SelectContent>
           </Select>
           <Select value={filterPriority} onValueChange={setFilterPriority}>
-            <SelectTrigger className="w-[80px] sm:w-[130px] h-7 sm:h-8 text-[10px] sm:text-sm">
+            <SelectTrigger className="w-20 sm:w-[130px] h-7 sm:h-8 text-[10px] sm:text-sm">
               <SelectValue placeholder="Priority" />
             </SelectTrigger>
             <SelectContent>
@@ -239,7 +242,7 @@ export function TaskTable({ tasks, sprints, onUpdate }: TaskTableProps) {
                     <SortIcon field="dueDate" />
                   </button>
                 </TableHead>
-                <TableHead className="w-[32px] sm:w-[50px]"></TableHead>
+                <TableHead className="w-8 sm:w-[50px]"></TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -280,7 +283,7 @@ export function TaskTable({ tasks, sprints, onUpdate }: TaskTableProps) {
                             key={a}
                             className="inline-flex items-center rounded-full bg-primary/10 px-1.5 sm:px-2 py-0.5 text-[8px] sm:text-xs font-medium text-primary"
                           >
-                            {a.split(" ")[0]}
+                            {/* {a.email} */}
                           </span>
                         ))}
                         {task.assignees.length > 2 && (

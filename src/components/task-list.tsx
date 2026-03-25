@@ -25,13 +25,9 @@ interface TaskListProps {
 export function TaskList({ projectId, sprints, onUpdate }: TaskListProps) {
   const [createOpen, setCreateOpen] = useState(false);
   const [view, setView] = useState<"table" | "kanban">("table");
-  const sprintId = sprints[0]?._id || undefined;
+  // const sprintId = sprints[0]?._id || undefined;
   // console.log("object :>> ", projectId, sprintId);
-  const {
-    data: taskData,
-    isLoading,
-    isError,
-  } = useGetAllTasksQuery({
+  const { data: taskData } = useGetAllTasksQuery({
     projectId,
   });
 

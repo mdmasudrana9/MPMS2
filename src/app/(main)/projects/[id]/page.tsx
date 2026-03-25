@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { EditProjectDialog } from "@/src/components/edit-project-dialog";
@@ -51,7 +53,7 @@ export default function ProjectDetailPage() {
   const params = useParams();
   console.log("params :>> ", params);
   const { data, isLoading, isError } = useGetSingleProjectQuery(
-    params.id as string
+    params.id as string,
   );
 
   const router = useRouter();
@@ -103,7 +105,7 @@ export default function ProjectDetailPage() {
 
   const daysRemaining = Math.ceil(
     (new Date(project.endDate).getTime() - new Date().getTime()) /
-      (1000 * 60 * 60 * 24)
+      (1000 * 60 * 60 * 24),
   );
 
   return (
@@ -298,8 +300,8 @@ export default function ProjectDetailPage() {
                         daysRemaining < 0
                           ? "text-destructive"
                           : daysRemaining < 14
-                          ? "text-amber-500"
-                          : "text-foreground"
+                            ? "text-amber-500"
+                            : "text-foreground"
                       }`}
                     >
                       {daysRemaining < 0

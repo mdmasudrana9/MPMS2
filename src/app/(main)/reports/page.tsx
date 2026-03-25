@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 "use client";
 
 import { Badge } from "@/src/components/ui/badge";
@@ -61,7 +63,7 @@ export default function ReportsPage() {
     const projectTasks = tasks.filter((t) => t.projectId === project._id);
     const totalTasks = projectTasks.length;
     const completedTasks = projectTasks.filter(
-      (t) => t.status === "done"
+      (t) => t.status === "done",
     ).length;
     const remainingTasks = totalTasks - completedTasks;
     const progressPercent =
@@ -126,7 +128,7 @@ export default function ReportsPage() {
   // Summary stats
   const totalTasks = filteredTasks.length;
   const completedTasks = filteredTasks.filter(
-    (t) => t.status === "done"
+    (t) => t.status === "done",
   ).length;
   const remainingTasks = totalTasks - completedTasks;
   const totalEstimate = filteredTasks.reduce((sum, t) => sum + t.estimate, 0);
@@ -366,7 +368,7 @@ export default function ReportsPage() {
                     const completionPercent =
                       user.totalHours > 0
                         ? Math.round(
-                            (user.completedHours / user.totalHours) * 100
+                            (user.completedHours / user.totalHours) * 100,
                           )
                         : 0;
                     return (
@@ -378,10 +380,7 @@ export default function ReportsPage() {
                           <div className="flex items-center gap-2 md:gap-3 min-w-0">
                             <div className="h-8 w-8 md:h-10 md:w-10 rounded-full bg-primary/10 flex items-center justify-center">
                               <span className="text-xs md:text-sm font-medium text-primary">
-                                {user.name
-                                  .split(" ")
-                                  .map((n) => n[0])
-                                  .join("")}
+                                {user.name}
                               </span>
                             </div>
                             <div className="min-w-0">

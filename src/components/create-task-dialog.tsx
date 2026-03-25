@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/incompatible-library */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -76,8 +79,14 @@ export function CreateTaskDialog({
 
   console.log("members :>> ", members);
 
-  const existingAssignees = members.map((member: any) => member._id);
-
+  const existingAssignees = members.map((member: any) => ({
+    label: member.name,
+    value: member.user?._id || member._id,
+  }));
+  const getUserName = (id: string) => {
+    const user = existingAssignees.find((u: any) => u.value === id);
+    return user?.label || id;
+  };
   console.log(existingAssignees);
 
   const { control, handleSubmit, reset, watch, setValue } = useForm<FormValues>(
@@ -94,7 +103,7 @@ export function CreateTaskDialog({
         dueDate: "",
         subtasks: [],
       },
-    }
+    },
   );
 
   const [createTask, { isLoading }] = useCreateTaskMutation();
@@ -314,16 +323,18 @@ export function CreateTaskDialog({
                     <SelectTrigger>
                       <SelectValue placeholder="Select assignee" />
                     </SelectTrigger>
+
                     <SelectContent>
-                      {existingAssignees.map((name: any) => (
-                        <SelectItem key={name} value={name}>
-                          {name}
+                      {existingAssignees.map((member: any) => (
+                        <SelectItem key={member.value} value={member.value}>
+                          {member.label}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                 )}
               />
+
               <Button
                 type="button"
                 variant="outline"
@@ -340,13 +351,14 @@ export function CreateTaskDialog({
               </Button>
             </div>
 
+            {/* Selected Assignees */}
             <div className="flex flex-wrap gap-2 mt-2">
               {assignees.map((a) => (
                 <span
                   key={a}
                   className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 text-sm text-primary"
                 >
-                  {a}
+                  {getUserName(a)}
                   <button type="button" onClick={() => handleRemoveAssignee(a)}>
                     <X className="h-3 w-3" />
                   </button>

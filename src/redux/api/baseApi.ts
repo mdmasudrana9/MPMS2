@@ -47,7 +47,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     //   credentials: "include",
     // });
     const data = await res.json();
-    if (data?.data.accessToken) {
+    if (data?.data?.accessToken) {
       const user = (api.getState() as RootState).auth.user;
       api.dispatch(setUser({ user, token: data?.data.accessToken }));
       result = await BaseQuery(args, api, extraOptions);
