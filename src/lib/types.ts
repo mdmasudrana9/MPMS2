@@ -23,7 +23,7 @@ export interface Task {
   title: string;
   description: string;
   assignees: string[];
-  estimate: number; // hours
+  estimate: number;
   priority: TaskPriority;
   status: TaskStatus;
   dueDate: string;

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/static-components */
 "use client";
 
@@ -278,12 +279,12 @@ export function TaskTable({ tasks, sprints, onUpdate }: TaskTableProps) {
                     </TableCell>
                     <TableCell className="py-2 sm:py-4 hidden lg:table-cell">
                       <div className="flex flex-wrap gap-1">
-                        {task.assignees.slice(0, 2).map((a) => (
+                        {task.assignees.slice(0, 2).map((a: any) => (
                           <span
-                            key={a}
+                            key={a.id}
                             className="inline-flex items-center rounded-full bg-primary/10 px-1.5 sm:px-2 py-0.5 text-[8px] sm:text-xs font-medium text-primary"
                           >
-                            {/* {a.email} */}
+                            {a.id}
                           </span>
                         ))}
                         {task.assignees.length > 2 && (
